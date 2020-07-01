@@ -1,0 +1,665 @@
+<div class="number-list-content  container-fluid">
+
+    <div class="number-search-filter mb-4">
+      <form #values="ngForm">
+  
+        <div class="row form-group">
+          <div class="col-md-6">
+            <div class="row form-group">
+              <div class="col-md-auto pt-1 pr-0 fs-12">
+                {{lables.apkDate}}
+              </div>
+              <div class="col-md-auto">
+                <input type="text" [(ngModel)]="appForm.apkDate" name="apkDate" placeholder="04/05/2020"
+                  class="form-control form-control-input">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row form-group">
+              <div class="col-md-auto pt-1 pr-0 ml-auto ">
+                {{lables.projectNo}}
+              </div>
+              <div class="col-md-auto">
+                <input type="text" [(ngModel)]="appForm.projectNo" name="projectNo" placeholder="20011899"
+                  class="form-control form-control-input">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="boxdiv">
+          <div class="lineheading">
+            <h4>{{lables.projAddress}}</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <label for="" class="fs-12 d-block">{{lables.occupant}}</label>
+              <input type="text" name="occupant" [(ngModel)]="projectAddressForm.occupant"
+                placeholder="GENERAL 2 HOUSING REPEAT HOMES" class="form-control form-control-input">
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="" class="fs-12 d-block">{{lables.projectAddress}}</label>
+              <input type="text" name="projAddress" [(ngModel)]="projectAddressForm.projectAddress"
+                placeholder="2022 2022 HOUSING REPEAT, HOUSTON, TX, 77002" class="form-control form-control-input">
+            </div>
+            <div class="col-sm-3 mb-3">
+              <label for="" class="fs-12 d-block">{{lables.taxAssessorParcel}}</label>
+              <input type="text" name="taxAssessorParcel" [(ngModel)]="projectAddressForm.taxAssessorParcel"
+                placeholder="2022 2022 HOUSING REPEAT, HOUSTON, TX, 77002" class="form-control form-control-input">
+            </div>
+            <div class="col-sm-3 mb-3">
+              <label for="" class="fs-12 d-block">{{lables.tractId}}</label>
+              <input type="text" name="tractId" [(ngModel)]="projectAddressForm.tractId" placeholder=""
+                class="form-control form-control-input">
+            </div>
+          </div>
+  
+  
+          <div class="row">
+            <div class="col-sm-4 pt-1">
+              <label class="container-checkbox">{{lables.dataAccuracy}}
+                <input type="checkbox" name="dataAccuracy" [(ngModel)]="projectAddressForm.dataAccuracy"
+                  checked="checked">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <div class="text-center">
+                <button type="button" class="btn btn-secondary btn-custom btn-block">{{lables.update}}</button>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="text-right">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <div class="col-md-auto pt-1 pr-0 fs-12">
+                      {{lables.cityMaster}}
+                    </div>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" name="cityMaster" [(ngModel)]="projectAddressForm.cityMaster" placeholder=""
+                      class="form-control form-control-input">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-11 pb-3">
+              <label for="" class="fs-12 d-block">{{lables.discription}}</label>
+              <input type="text" name="discription" [(ngModel)]="projectAddressForm.discription"
+                placeholder="2022 2022 HOUSING REPEAT, HOUSTON, TX, 77002" class="form-control form-control-input">
+            </div>
+            <div class="col-md-auto">
+              <div class="height-blank-24"></div>
+              <button class="btn btn-secondary height-blank">&nbsp;</button>
+            </div>
+          </div>
+        </div>
+        <!-- start applicant section -->
+        <div class="boxdiv mt-4" *ngIf="isApplicantFlag">
+          <div class="lineheading">
+            <h4>{{lables.apkInfo}}</h4>
+          </div>
+          <div class="boxmiddile">
+            <h5>{{lables.fml}}</h5>
+  
+            <div class="row">
+              <div class="col-auto">
+                <label class="container-radio ">{{lables.individual}}
+                  <input type="radio" name="individualOrCorpo_Firm" value="individual"
+                    [(ngModel)]="applicantFrom.individualOrCorpo_Firm">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-md-4">
+                <label class="container-radio">{{lables.corpo_Firm}}
+                  <input type="radio" name="individualOrCorpo_Firm" value="corpo_Firm"
+                    [(ngModel)]="applicantFrom.individualOrCorpo_Firm">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mt-2 mb-3">
+                <label for="" class="fs-12 d-block">Name</label>
+                <input type="text" name="nameGeneral" [(ngModel)]="applicantFrom.nameGeneral" placeholder="GENERAL2"
+                  class="form-control form-control-input">
+              </div>
+              <div class="col-md-3 mt-2 mb-3">
+                <label for="" class="fs-12 d-block">&nbsp;</label>
+                <input type="text" name="nameTester" [(ngModel)]="applicantFrom.nameTester" placeholder="TESTER"
+                  class="form-control form-control-input">
+              </div>
+              <div class="col-md-3 mt-2 mb-3">
+                <label for="" class="fs-12 d-block">&nbsp;</label>
+                <input type="text" name="nameOne" [(ngModel)]="applicantFrom.nameOne" placeholder="ONE"
+                  class="form-control form-control-input">
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="height-blank"></div>
+                <button class="btn btn-secondary btn-custom btn-block" (click)="updates()"
+                  type="button">{{lables.apkbutton}}</button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-3 mb-3">
+            <div class="col-md-2 pt-4">
+              <h5 class="h5">
+                {{lables.address}}
+              </h5>
+            </div>
+  
+            <div class="col-md-1">
+              <label for="" class="fs-12 d-block">{{lables.no}}</label>
+              <input type="text" name="addressNo" [(ngModel)]="applicantFrom.addressNo" placeholder="No."
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.fraction}}</label>
+              <kendo-dropdownlist class="w-130-h-25" [data]="applicantFrom.addressFraction"></kendo-dropdownlist>
+              <!-- <select name="addressFraction" [(ngModel)]="applicantFrom.addressFraction" id="" placeholder="Fraction"
+                class="d-block w-100">
+                <option value=""></option>
+              </select> -->
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.direction}}</label>
+              <kendo-dropdownlist class="w-130-h-25" [data]="applicantFrom.addressDirection"></kendo-dropdownlist>
+              <!-- <select name="address" [(ngModel)]="applicantFrom.addressDirection" id="" placeholder="Fraction"
+                class="d-block w-100">
+                <option value=""></option>
+              </select> -->
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.streetType}}</label>
+              <input type="text" name="streetType" [(ngModel)]="applicantFrom.addressStreetType" placeholder=""
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.streetName}}</label>
+              <input type="text" name="streetName" [(ngModel)]="applicantFrom.addressStreetName" placeholder=""
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md-1">
+              <label for="" class="fs-12 d-block">{{lables.space}}</label>
+              <input type="text" name="addressSpace" [(ngModel)]="applicantFrom.addressSpace" placeholder=""
+                class="form-control form-control-input">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-2 pt-4">
+              <h5 class="h5">
+                {{lables.city}}
+              </h5>
+            </div>
+            <div class="col-md-3">
+              <label for="" class="fs-12 d-block">{{lables.housing}}</label>
+              <input type="text" name="cityHousing" [(ngModel)]="applicantFrom.cityHousing" placeholder=""
+                class="form-control form-control-input">
+  
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.state}}</label>
+              <input type="text" name="cityState" [(ngModel)]="applicantFrom.cityState" placeholder=""
+                class="form-control form-control-input" placeholder="TX">
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.zipCode}}</label>
+              <input type="text" name="cityZipcode" [(ngModel)]="applicantFrom.cityZipcode" placeholder=""
+                class="form-control form-control-input" placeholder="77002">
+            </div>
+            <div class="col-md-3">
+              <label for="" class="fs-12 d-block">&nbsp;</label>
+              <input type="text" name="cityN" [(ngModel)]="applicantFrom.cityN" placeholder=""
+                class="form-control form-control-input" placeholder="0000">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 mb-3">
+              <h5 class="h5">
+                {{lables.phone}}
+              </h5>
+            </div>
+            <div class="col-md-2 mb-3">
+              <input type="text" name="phone" [(ngModel)]="applicantFrom.phone" placeholder=""
+                class="form-control form-control-input" placeholder="0000">
+  
+            </div>
+            <div class="col-md-1 pt-1 mb-3">
+              {{lables.email}}
+            </div>
+            <div class="col-md-3 mb-3">
+              <input type="text" name="email" [(ngModel)]="applicantFrom.email" placeholder=""
+                class="form-control form-control-input" placeholder="example@gmail.com">
+            </div>
+            <div class="col-md-4 mb-3">
+              <button class="btn btn-secondary btn-block btn-custom">
+                {{lables.copybtn}}
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- End applicant section -->
+  
+        <!-- start Owner Builder section -->
+        <div class="boxdiv mt-4" *ngIf="!isApplicantFlag">
+          <div class="lineheading">
+            <h4>{{lables.ownerInfo}}</h4>
+          </div>
+          <div class="boxmiddile">
+            <h5>{{lables.fml}}</h5>
+  
+            <div class="row">
+              <div class="col-auto">
+                <label class="container-radio ">{{lables.individual}}
+                  <input type="radio" name="individualOrCorpo_Firm1" value="individual"
+                    [(ngModel)]="ownerFrom.individualOrCorpo_Firm">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="col-md-4">
+                <label class="container-radio">{{lables.corpo_Firm}}
+                  <input type="radio" name="individualOrCorpo_Firm1" value="corpo_Firm"
+                    [(ngModel)]="ownerFrom.individualOrCorpo_Firm">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mt-2 mb-3">
+                <label for="" class="fs-12 d-block">Name</label>
+                <input type="text" name="nameGeneral1" [(ngModel)]="ownerFrom.nameGeneral" placeholder="GENERAL2"
+                  class="form-control form-control-input">
+              </div>
+              <div class="col-md-3 mt-2 mb-3">
+                <label for="" class="fs-12 d-block">&nbsp;</label>
+                <input type="text" name="nameTester1" [(ngModel)]="ownerFrom.nameTester" placeholder="TESTER"
+                  class="form-control form-control-input">
+              </div>
+              <div class="col-md-3 mt-2 mb-3">
+                <label for="" class="fs-12 d-block">&nbsp;</label>
+                <input type="text" name="nameOne1" [(ngModel)]="ownerFrom.nameOne" placeholder="ONE"
+                  class="form-control form-control-input">
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="height-blank"></div>
+                <button class="btn btn-secondary btn-custom btn-block" (click)="updates()"
+                  type="button">{{lables.builder}}</button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-3 mb-3">
+            <div class="col-md-2 pt-4">
+              <h5 class="h5">
+                {{lables.address}}
+              </h5>
+            </div>
+  
+            <div class="col-md-1">
+              <label for="" class="fs-12 d-block">{{lables.no}}</label>
+              <input type="text" name="addressNo1" [(ngModel)]="ownerFrom.addressNo" placeholder="No."
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md-2">
+  
+              <label for="" class="fs-12 d-block">{{lables.fraction}}</label>
+              <select id="" name="addressFraction1" [(ngModel)]="ownerFrom.addressFraction" placeholder="Fraction"
+                class="d-block w-100">
+                <option value=""></option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.direction}}</label>
+              <select id="" name="addressDirection1" [(ngModel)]="ownerFrom.addressDirection" placeholder="Fraction"
+                class="d-block w-100">
+                <option value=""></option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.streetType}}</label>
+              <input type="text" name="addressStreetType1" [(ngModel)]="ownerFrom.addressStreetType" placeholder=""
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.streetName}}</label>
+              <input type="text" name="addressStreetName1" [(ngModel)]="ownerFrom.addressStreetName" placeholder=""
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md-1">
+              <label for="" class="fs-12 d-block">{{lables.space}}</label>
+              <input type="text" name="addressSpace1" [(ngModel)]="ownerFrom.addressSpace" placeholder=""
+                class="form-control form-control-input">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-2 pt-4">
+              <h5 class="h5">
+                {{lables.city}}
+              </h5>
+            </div>
+            <div class="col-md-3">
+              <label for="" class="fs-12 d-block">{{lables.housing}}</label>
+              <input type="text" name="cityHousing1" [(ngModel)]="ownerFrom.cityHousing" placeholder=""
+                class="form-control form-control-input">
+  
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.state}}</label>
+              <input type="text" name="cityState1" [(ngModel)]="ownerFrom.cityState" placeholder=""
+                class="form-control form-control-input" placeholder="TX">
+            </div>
+            <div class="col-md-2">
+              <label for="" class="fs-12 d-block">{{lables.zipCode}}</label>
+              <input type="text" name="cityZipcode1" [(ngModel)]="ownerFrom.cityZipcode" placeholder=""
+                class="form-control form-control-input" placeholder="77002">
+            </div>
+            <div class="col-md-3">
+              <label for="" class="fs-12 d-block">&nbsp;</label>
+              <input type="text" name="cityN1" [(ngModel)]="ownerFrom.cityN" placeholder=""
+                class="form-control form-control-input" placeholder="0000">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 mb-3">
+              <h5 class="h5">
+                {{lables.phone}}
+              </h5>
+            </div>
+            <div class="col-md-2 mb-3">
+              <input type="text" name="phone1" [(ngModel)]="ownerFrom.phone" placeholder=""
+                class="form-control form-control-input" placeholder="0000">
+  
+            </div>
+            <div class="col-md-1 pt-1 mb-3">
+              {{lables.email}}
+            </div>
+            <div class="col-md-3 mb-3">
+              <input type="text" name="email1" [(ngModel)]="ownerFrom.email" placeholder=""
+                class="form-control form-control-input" placeholder="example@gmail.com">
+            </div>
+            <div class="col-md-4 mb-3">
+              <button class="btn btn-secondary btn-block btn-custom">
+                {{lables.copybtn}}
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- End Owner Builder section -->
+  
+  
+  
+        <div class="row mt-4 ">
+          <div class="col-md-6">
+            <div class="boxmiddile">
+              <h5>{{lables.orglbl}}</h5>
+              <div class="row mb-2">
+                <div class="col-md-2">
+                  <input type="text" name="m1" [(ngModel)]="orgForm.m1" placeholder=""
+                    class="w-none form-control form-control-input" placeholder="M">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m2" [(ngModel)]="orgForm.m2" placeholder=""
+                    class="w-none form-control form-control-input" placeholder="">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-2">
+                  <input type="text" name="m3" [(ngModel)]="orgForm.m3" placeholder=""
+                    class="form-control form-control-input" placeholder="">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m4" [(ngModel)]="orgForm.m4" placeholder=""
+                    class="form-control form-control-input" placeholder="">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row row mb-2">
+                <div class="col-md-2 ">
+                  <input type="text" name="m5" [(ngModel)]="orgForm.m5" class="form-control form-control-input"
+                    placeholder="M">
+  
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m6" [(ngModel)]="orgForm.m6" class="form-control form-control-input"
+                    placeholder="">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="boxmiddile">
+              <h5>{{lables.inspectionlbl}}</h5>
+              <div class="row mb-2">
+                <div class="col-md-2 ">
+                  <input type="text" name="m1" [(ngModel)]="inspectionForm.m1"
+                    class="w-none form-control form-control-input" placeholder="M">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m2" [(ngModel)]="inspectionForm.m2"
+                    class="w-none form-control form-control-input" placeholder="">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-2 ">
+                  <input type="text" name="m3" [(ngModel)]="inspectionForm.m3"
+                    class="w-none form-control form-control-input" placeholder="M">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m4" [(ngModel)]="inspectionForm.m4"
+                    class="w-none form-control form-control-input" placeholder="">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-2 ">
+                  <input type="text" name="m5" [(ngModel)]="inspectionForm.m5"
+                    class="w-none form-control form-control-input" placeholder="M">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m6" [(ngModel)]="inspectionForm.m6"
+                    class="w-none form-control form-control-input" placeholder="">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="boxmiddile">
+              <h5>{{lables.fcc_fup}}</h5>
+              <div class="row mb-2">
+                <div class="col-md-2">
+                  <input type="text" name="m1" [(ngModel)]="fccFrom.m1" class="w-none form-control form-control-input"
+                    placeholder="001">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m2" [(ngModel)]="fccFrom.m2" class="w-none form-control form-control-input"
+                    placeholder="New Single Family Dwelling">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-2">
+                  <input type="text" name="m3" [(ngModel)]="fccFrom.m3" class="w-none form-control form-control-input"
+                    placeholder="M">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m4" [(ngModel)]="fccFrom.m4" class="w-none form-control form-control-input"
+                    placeholder="">
+  
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5 pt-1  height45">
+  
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-5 pt-1">
+                  {{lables.estimated}}
+                </div>
+                <div class="col-md-5">
+                  <input type="text" name="estimated" [(ngModel)]="fccFrom.estimated"
+                    class="w-none form-control form-control-input" placeholder="350000">
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-5 pt-1">
+                  {{lables.footage}}
+                </div>
+                <div class="col-md-5">
+                  <input type="text" name="footage" [(ngModel)]="fccFrom.footage"
+                    class="w-none form-control form-control-input" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="boxmiddile">
+              <h5>{{lables.rating}}</h5>
+              <div class="row mb-2">
+                <div class="col-md-2 ">
+                  <input type="text" name="m1" [(ngModel)]="occupancyForm.m1"
+                    class="w-none form-control form-control-input" placeholder="M">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m2" [(ngModel)]="occupancyForm.m2"
+                    class="w-none form-control form-control-input" placeholder="Housing & Community Development">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-2 ">
+                  <input type="text" name="m3" [(ngModel)]="occupancyForm.m3"
+                    class="w-none form-control form-control-input" placeholder="m">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m4" [(ngModel)]="occupancyForm.m4"
+                    class="w-none form-control form-control-input" placeholder="">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-2 ">
+                  <input type="text" name="m5" [(ngModel)]="occupancyForm.m5"
+                    class="w-none form-control form-control-input" placeholder="P">
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" name="m6" [(ngModel)]="occupancyForm.m6"
+                    class="w-none form-control form-control-input" placeholder="Plans Upload to ProjectDox">
+                </div>
+                <div class="col-md-2 ">
+                  <button class="btn btn-secondary btn-custom">&nbsp;</button>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-5 pt-1">
+                  {{lables.load}}
+                </div>
+                <div class="col-md-5">
+                  <input type="text" name="load" [(ngModel)]="occupancyForm.load"
+                    class="w-none form-control form-control-input" placeholder="N/A">
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-5 pt-1">
+                  {{lables.proj_no}}
+                </div>
+                <div class="col-md-5">
+                  <input type="text" name="proj_no" [(ngModel)]="occupancyForm.proj_no"
+                    class="w-none form-control form-control-input" placeholder="N/A">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="boxmiddile">
+              <h5>{{lables.plan}}</h5>
+              <div class="row mb-2">
+                <div class="col-md-2 pt-1">
+                  <label class="container-checkbox">{{lables.required}}
+                    <input type="checkbox" name="required" [(ngModel)]="planReviewForm.required" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-md-auto">
+                  {{lables.date}}
+                </div>
+                <div class="col-md-3">
+                  <input type="text" name="date" [(ngModel)]="planReviewForm.date"
+                    class="w-none form-control form-control-input" placeholder="">
+  
+                </div>
+                <div class="col-md-auto">
+                  {{lables.initials}}
+                </div>
+                <div class="col-md-3">
+                  <input type="text" name="initials" [(ngModel)]="initials" class="w-none form-control form-control-input"
+                    placeholder="">
+                </div>
+              </div>
+  
+  
+  
+  
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="boxmiddile">
+              <h5>{{lables.extension}}</h5>
+              <div class="row mb-2">
+                <div class="col-md-4 pt-1">
+                  <label class="container-checkbox">{{lables.enable}}
+                    <input type="checkbox" name="enable" [(ngModel)]="projectExtensionForm.enable" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-md-auto">
+                  {{lables.expires}}
+                </div>
+                <div class="col-md-3">
+                  <input type="text" name="expires" [(ngModel)]="projectExtensionForm.expires"
+                    class="w-none form-control form-control-input" placeholder="">
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

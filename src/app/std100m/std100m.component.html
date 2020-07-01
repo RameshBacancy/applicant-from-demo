@@ -1,0 +1,766 @@
+<div class="number-list-content container-fluid">
+  <div class="number-search-filter mb-12">
+    <form #frmSitusMaint="ngForm">
+      <div class="col-md-auto">
+        xwwwwwwww
+      </div>
+
+      <div class="boxdiv md-auto" Name="frmPropertyAddress">
+        <div class="lineheading">
+          <h4>{{labels.propertyAddress.title}}</h4>
+        </div>
+
+        <div class="row no-gutter">
+          <!-- start row -->
+          <div class="col-md-1">
+            <label for="txtSitusNumber" class="fs-12 d-block">{{labels.propertyAddress.houseNumber}}</label>
+            <input type="text" name="txtSitusNumber" [(ngModel)]="IlmsCache.SitusHouseNo"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md-1">
+            <label for="cboSitusFraction" class="fs-12 d-block">{{labels.propertyAddress.fraction}}</label>
+            <kendo-dropdownlist name="cboSitusFraction" [data]="IlmsCache.SitusNoFrs" textField="text"
+              valueField="value" [valuePrimitive]="true" [(ngModel)]="IlmsCache.SitusFraction"
+              style="width: 47px;background-color: white;">
+            </kendo-dropdownlist>
+          </div>
+          <div class="col-md-1">
+            <label for="cboSitusPreDirect" class="fs-12 d-block">{{labels.propertyAddress.direction}}.</label>
+            <kendo-dropdownlist name="cboSitusPreDirect" [data]="IlmsCache.SitusPreDirs" textField="text"
+              valueField="value" [valuePrimitive]="true" [(ngModel)]="IlmsCache.SitusPreDirection"
+              style="width: 39px;background-color: white;">
+            </kendo-dropdownlist>
+          </div>
+          <div class="col-md-2">
+            <label for="txtSitusName" class="fs-12 d-block">{{labels.propertyAddress.streetName}}</label>
+            <input type="text" name="txtSitusName" [(ngModel)]="IlmsCache.SitusStreetName"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md">
+            <label for="cboSitusType" class="fs-12 d-block">{{labels.propertyAddress.streetType}}</label>
+            <input type="text" name="cboSitusType" [(ngModel)]="IlmsCache.SitusStreetType"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md">
+            <label for="cboSitusSecIdent" class="fs-12 d-block">{{labels.propertyAddress.unitID}}</label>
+            <kendo-dropdownlist name="cboSitusSecIdent" [data]="IlmsCache.SitusSecIds" textField="text"
+              valueField="value" [valuePrimitive]="true" [(ngModel)]="IlmsCache.SitusSecIdentifer"
+              style="width: 102px;background-color: white;">
+            </kendo-dropdownlist>
+          </div>
+          <div class="col-md">
+            <label for="txtSitusSecRange" class="fs-12 d-block"> {{labels.propertyAddress.unitNo}}</label>
+            <input type="text" name="txtSitusSecRange" [(ngModel)]="IlmsCache.SitusSecRange"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md">
+            <label for="txtSitusZipCode1" class="fs-12 d-block">{{labels.propertyAddress.zipCode}}</label>
+            <input type="text" name="txtSitusZipCode1" [(ngModel)]="IlmsCache.SitusZipCode"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md">
+            <label for="txtSitusZipCode2" class="fs-12 d-block">{{labels.propertyAddress.zipPlus}}</label>
+            <input type="text" name="txtSitusZipCode2" [(ngModel)]="IlmsCache.SitusZipPlus"
+              class="form-control form-control-input">
+          </div>
+        </div> <!-- end row -->
+        <div class="row">
+          <!-- start row -->
+          <div class="col-md-12">
+            <label for="txtBuildingName" class="fs-12 d-block">{{labels.propertyAddress.buildingName}}</label>
+            <input type="text" name="txtBuildingName" [(ngModel)]="std100mHeader.BldgName"
+              class="form-control form-control-input">
+          </div>
+        </div> <!-- end row -->
+
+        <div class="row">
+          <!-- start row -->
+          <div class="col-sm-auto pt-3">
+
+            <label class="container-checkbox" for="chkPrivateStreet">
+              <input type="checkbox" id="chkPrivateStreet" name="chkPrivateStreet"
+                [(ngModel)]="checkbox.chkPrivateStreet">
+              <span class="checkmark"></span>
+              {{labels.propertyAddress.cbPrivateStreet}}
+            </label>
+          </div>
+          <div class="col-sm pt-3">
+
+            <label class="container-checkbox" for="chkOCL">
+              <input id="chkOCL" type="checkbox" name="chkOCL" [(ngModel)]="checkbox.chkOCL">
+              <span class="checkmark"></span>
+              {{labels.propertyAddress.cdOutsideCity}}
+            </label>
+          </div>
+        </div> <!-- end row -->
+        <div class="row col-md-auto">
+          <!-- start row -->
+          <div class="col-md-3">
+            {{std100mHeader.NewSitusState}}
+          </div>
+          <div class="col-md-4">
+            {{std100mHeader.NewSitusCity}}
+          </div>
+        </div> <!-- end row -->
+      </div> <!-- end frame -->
+
+      <div class="row pt-3 pb-3">
+        <!-- start row -->
+        <div class="col-sm-3  d-flex align-items-center">
+          <label class="container-checkbox" for="chkOverrideGISWarning">
+            <input checked="checked" type="checkbox" id="chkOverrideGISWarning" name="chkOverrideGISWarning"
+              [(ngModel)]="checkbox.chkOverrideGISWarning">
+            <span class="checkmark"></span>
+            {{labels.oGISWarning}}
+          </label>
+        </div>
+        <div class="col-sm-3">
+          <div class="text-center">
+            <button type="button" Name="cmdSubmit" class="btn btn-secondary btn-block btn-custom">Update</button>
+          </div>
+        </div>
+        <div class="col-sm-4 d-flex align-items-center">
+          <label class="container-checkbox" for="chkCertified">
+            <input checked="checked" type="checkbox" id="chkCertified" name="chkCertified"
+              [(ngModel)]="checkbox.chkCertified">
+            <span class="checkmark"></span>
+            {{labels.dataAccuracy}}
+          </label>
+        </div>
+      </div> <!-- end row -->
+
+      <div class="boxdiv md-auto" Name="frmPrimaryData">
+        <div class="boxdiv md-auto" Name="frmResponsibleParty">
+          <div class="lineheading">
+            <h4> {{labels.lastFirstMidddle.title}}</h4>
+          </div>
+          <div class="row">
+            <!-- begin frame row -->
+            <div class="col-md-auto">
+              <label class="container-radio">
+                <input type="radio" name="optOccupantType0" value="0" [(ngModel)]="applicantFrom.individual"
+                  kendoRadioButton>
+                <span class="checkmark"></span>
+                {{labels.lastFirstMidddle.individual}}
+              </label>
+            </div>
+            <div class="col-md-3">
+              <label class="container-radio">
+                <input type="radio" name="optOccupantType1" value="1" [(ngModel)]="applicantFrom.individual"
+                  kendoRadioButton>
+                <span class="checkmark"></span>
+                {{labels.lastFirstMidddle.corporationFirm}}
+              </label>
+            </div>
+          </div> <!-- end row -->
+          <div class="row mt-2">
+            <!-- start row -->
+            <div class="col-md">
+              <label class="fs-12 d-block">{{labels.lastFirstMidddle.occupantName}}</label>
+              <input type="hiddem" name="txtOccupantType" class="form-control form-control-input">
+            </div>
+
+            <div class="col-md">
+              <label class="fs-12 d-block">{{labels.lastFirstMidddle.lastName}}</label>
+              <input type="text" name="txtOccupantLast" [(ngModel)]="std100mHeader.NewNameLast"
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md">
+              <label class="fs-12 d-block">{{labels.lastFirstMidddle.firstName}}</label>
+              <input type="text" name="txtOccupantFirst" [(ngModel)]="std100mHeader.NewNameFirst"
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md">
+              <label for="txtOccupantMiddle" class="fs-12 d-block">{{labels.lastFirstMidddle.middleName}}</label>
+              <input type="text" name="txtOccupantMiddle" [(ngModel)]="std100mHeader.NewNameMiddle"
+                class="form-control form-control-input">
+            </div>
+            <div class="col-md">
+              <label for="txtOccupantMiddle" class="fs-12 d-block">&nbsp;</label>
+              <div class="text-center">
+                <button type="button" Name="cmdSitusNames"
+                  class="btn btn-secondary btn-block btn-custom">{{labels.lastFirstMidddle.otherNames}}</button>
+              </div>
+            </div>
+          </div> <!-- end row -->
+        </div> <!-- end frame -->
+        <div class="row mt-2">
+          <!-- start row -->
+          <div class="col-md-3 d-flex align-items-end pb-1">
+            {{labels.dataAccuracy}}
+          </div>
+          <div class="col-md-1">
+            <label for="txtAssessor1" class="fs-12 d-block"></label>
+            <input type="text" name="txtAssessor1" [(ngModel)]="std100mHeader.NewAssessor13"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md-1">
+            <label for="txtAssessor2" class="fs-12 d-block"></label>
+            <input type="text" name="txtAssessor2" [(ngModel)]="std100mHeader.NewAssessor46"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md-1">
+            <label for="txtAssessor3" class="fs-12 d-block"></label>
+            <input type="text" name="txtAssessor3" [(ngModel)]="std100mHeader.NewAssessor79"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md-1">
+            <label for="txtAssessor4" class="fs-12 d-block"></label>
+            <input type="text" name="txtAssessor4" [(ngModel)]="std100mHeader.NewAssessor1012"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md-1">
+            <label for="txtAssessor5" class="fs-12 d-block"></label>
+            <input type="text" name="txtAssessor5" [(ngModel)]="std100mHeader.NewAssessor1316"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md-auto d-flex align-items-end pb-1">
+            County
+          </div>
+          <div class="col-md-2">
+            <label for="txtCounty" class="fs-12 d-block"></label>
+            <input type="text" name="txtCounty" [(ngModel)]="std100mHeader.County"
+              class="form-control form-control-input">
+          </div>
+          <div class="col-md-1">
+            <label class="fs-12 d-block"></label>
+            <button type="button" Name="cmdCounty" class="btn btn-secondary btn-custom">&nbsp;</button>
+          </div>
+
+        </div> <!-- end row -->
+        <div class="row mt-2">
+          <!-- start row -->
+          <div class="col-md-3 d-flex align-items-end pb-1">
+            {{labels.subDivisionName}}
+          </div>
+          <div class="col-md-7">
+            <label for="txtTract" class="fs-12 d-block">{{labels.subDivisionName}}</label>
+            <input type="text" name="txtTract" [(ngModel)]="std100mHeader.Subdivision"
+              class="form-control form-control-input">
+          </div>
+        </div> <!-- end row -->
+        <div class="row mt-2">
+          <!-- start row -->
+          <div class="col-md-3"></div>
+          <div class="col-md-5">
+            <button type="button" Name="cmdToggleView" class="btn btn-secondary btn-block btn-custom"
+              (click)="toggleClick()">{{labels.btnToggleDisplay}}</button>
+          </div>
+        </div> <!-- end row -->
+
+        <ng-container *ngIf="toggleI == 1">
+          <div class="row mt-4 ">
+            <div class="col-md-6">
+              <div class="boxmiddile">
+                <h5>{{labels.occupancyCode.title}}</h5>
+                <div class="row mb-2">
+                  <div class="col-md-2">
+                    <input type="text" name="txtOccMatlType" [(ngModel)]="std100mHeader.OccupantType"
+                      class="w-none form-control form-control-input" value="5">
+                  </div>
+                  <div class="col-md-8 ">
+                    <input type="text" name="m4" [(ngModel)]="orgForm.m4" placeholder="Type-5 Construction"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md-2 ">
+                    <button class="btn btn-secondary btn-custom" type="button" Name="cmdOccMatlType">&nbsp;</button>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-md-2">
+                    <input type="text" name="txtOccGroup" [(ngModel)]="std100mHeader.OccupantType"
+                      class="form-control form-control-input" value="R3">
+                  </div>
+                  <div class="col-md-8 ">
+                    <input type="text" name="m4" [(ngModel)]="orgForm.m4" placeholder="Single Family Dwellings;"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md-2 ">
+                    <button class="btn btn-secondary btn-custom" Name="cmdOccGroup" type="button">&nbsp;</button>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-md-2 ">
+                    <input type="text" name="txtOccFireRating" [(ngModel)]="std100mHeader.OccupantType"
+                      class="form-control form-control-input" value="B">
+                  </div>
+                  <div class="col-md-8 ">
+                    <input type="text" name="m6" [(ngModel)]="orgForm.m6" class="form-control form-control-input"
+                      placeholder="">
+                  </div>
+                  <div class="col-md-2 ">
+                    <button class="btn btn-secondary btn-custom" type="button" Name="cmdOccFireRating">&nbsp;</button>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-md-auto pt-1 pr-0">
+                    {{labels.occupancyCode.occLoad}}
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" name="txtOccLoad" [(ngModel)]="std100mHeader.OccupantLoad"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md-auto pl-0">
+                    {{labels.occupancyCode.filters}}
+                  </div>
+                  <div class="col-md pl-1 pr-0">
+                    <input type="text" name="txtFilter1" [(ngModel)]="std100mHeader.Filter1"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md pl-1 pr-0">
+                    <input type="text" name="txtFilter2" [(ngModel)]="std100mHeader.Filter2"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md pl-1 pr-0">
+                    <input type="text" name="txtFilter3" [(ngModel)]="std100mHeader.Filter3"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md pl-1 pr-0">
+                    <input type="text" name="txtFilter4" [(ngModel)]="std100mHeader.Filter4"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md pl-1 pr-0">
+                    <input type="text" name="txtFilter5" [(ngModel)]="std100mHeader.Filter5"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md pl-1">
+                    <input type="text" name="txtFilter6" [(ngModel)]="std100mHeader.Filter6"
+                      class="form-control form-control-input">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="boxmiddile">
+                <h5>{{labels.generalInfo.title}}</h5>
+                <div class="row mb-2">
+                  <div class="col-md-12 ">
+                    <div class="row mb-2">
+                      <div class="col-md-6 ">
+                        <div class="row">
+                          <div class="col-md-7 pr-0">
+                            {{labels.generalInfo.buildings}}
+                          </div>
+                          <div class="col-md-5">
+                            <input type="text" name="txtNoOfBuildings" [(ngModel)]="std100mHeader.NewBldgCnt"
+                              class="form-control form-control-input">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="row">
+                          <div class="col-md-7 pr-0">
+                            {{labels.generalInfo.office}}
+                          </div>
+                          <div class="col-md-5">
+                            <input type="text" name="txtOffice" [(ngModel)]="std100mHeader.NewOffice"
+                              class="form-control form-control-input">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-md-6 ">
+                        <div class="row">
+                          <div class="col-md-7 pr-0">
+                            {{labels.generalInfo.dwellings}}
+                          </div>
+                          <div class="col-md-5">
+                            <input type="text" name="txtNoOfDwellings" [(ngModel)]="std100mHeader.NewDwlgCnt"
+                              class="form-control form-control-input" placeholder="0001">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="row">
+                          <div class="col-md-7 pr-0">
+                            {{labels.generalInfo.moduleEntry}}
+                          </div>
+                          <div class="col-md-5">
+                            <input type="text" name="txtModuleEntry" [(ngModel)]="std100mHeader.ModuleEntry"
+                              class="form-control form-control-input" placeholder="N">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-md-6 ">
+                        <div class="row">
+                          <div class="col-md-7 pr-0">
+                            {{labels.generalInfo.stories}}
+                          </div>
+                          <div class="col-md-5">
+                            <input type="text" name="txtNoOfStories" [(ngModel)]="std100mHeader.NoOfStories"
+                              class="form-control form-control-input" placeholder="02">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="row">
+                          <div class="col-md-7 pr-0">
+                            {{labels.generalInfo.councilDist}}
+                          </div>
+                          <div class="col-md-5">
+                            <input type="text" name="txtCouncilDistrict" [(ngModel)]="std100mHeader.CouncilDistNumber"
+                              class="form-control form-control-input">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-auto ">
+                        {{labels.generalInfo.ownership}}
+                      </div>
+                      <div class="col-md-5">
+                        <input type="text" name="txtOwnership" [(ngModel)]="std100mHeader.Ownership"
+                          class="form-control form-control-input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4 ">
+            <div class="col-md-6">
+              <div class="boxmiddile">
+                <h5> {{labels.fccFpuCode.title}}</h5>
+                <div class="row mb-2">
+                  <div class="col-md-2">
+                    <input type="text" name="txtFCC_Code" [(ngModel)]="std100mHeader.FccCode"
+                      class="form-control form-control-input" value="021">
+                  </div>
+                  <div class="col-md-8 ">
+                    <input type="text" name="m4" placeholder="" class="form-control form-control-input">
+                  </div>
+                  <div class="col-md-2 ">
+                    <button class="btn btn-secondary btn-custom" type="button" Name="cmdFCC_Code">&nbsp;</button>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-md-2">
+                    <input type="text" name="txtFPU_Code" [(ngModel)]="std100mHeader.FpuCode"
+                      class="form-control form-control-input">
+                  </div>
+                  <div class="col-md-8 ">
+                    <input type="text" name="m4" placeholder="" class="form-control form-control-input">
+                  </div>
+                  <div class="col-md-2 ">
+                    <button class="btn btn-secondary btn-custom" Name="cmdFPU_Code" type="button">&nbsp;</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="boxmiddile">
+                <h5> {{labels.dataRecorded.title}}</h5>
+                <div class="row mb-4 mt-1 pb-3">
+                  <div class="col-md-12 ">
+
+                    <div class="row">
+                      <div class="col-md-auto">
+
+                        <label class="container-radio">
+                          <input type="radio" name="optDatetype0" value="0" [(ngModel)]="std100mHeader.DeedRestriction"
+                            kendoRadioButto>
+                          <span class="checkmark"></span>
+                          {{labels.dataRecorded.deed}}
+                        </label>
+                      </div>
+                      <div class="col-md-auto">
+                        <label class="container-radio">
+                          <input type="radio" name="optDatetype0" value="1"
+                            [(ngModel)]="std100mHeader.DeedRestriction">
+                          <span class="checkmark"></span>
+                          {{labels.dataRecorded.waiver}}
+                        </label>
+                      </div>
+                      <div class="col-md">
+                        <input type="text" name="txtReceivedWaiver" [(ngModel)]="std100mHeader.NewRecdWaiveDate"
+                          class="form-control form-control-input">
+                      </div>
+                      <div class="col-md-2">
+                        <button class="btn btn-secondary btn-custom" Name="cmdReceivedWaiver"
+                          type="button">&nbsp;</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="toggleI == 2">
+          <div class="boxdiv md-auto mt-4" Name="frmAdditionalFlags">
+            <div class="boxdiv md-auto" Name="Frame3">
+              <div class="lineheading">
+                <h4> {{labels.hisDistCont.title}}</h4>
+              </div>
+              <div class="row mt-2 ">
+                <div class="col-md-6">
+                  <div class="boxmiddile pb-3">
+                    <h5>{{labels.hisDistCont.lastSignAppAuth.title}}</h5>
+                    <div class="row mt-2">
+                      <div class="col-md-12">
+                      </div>
+                      <div class="col-md-4 text-center">
+                        {{labels.hisDistCont.lastSignAppAuth.authorizedBy}} <br>
+                        {{labels.hisDistCont.lastSignAppAuth.by}}
+                      </div>
+                      <div class="col-md-4 text-center">
+                        {{labels.hisDistCont.lastSignAppAuth.date}}
+                      </div>
+                      <div class="col-md-4 text-center">
+                        {{labels.hisDistCont.lastSignAppAuth.time}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="boxmiddile pb-3">
+                    <h5> {{labels.hisDistCont.lastAppAuth.title}}</h5>
+                    <div class="row mt-2">
+                      <div class="col-md-6 text-center">
+                        {{labels.hisDistCont.lastAppAuth.appNum}}<br> {{labels.hisDistCont.lastAppAuth.number}}
+                      </div>
+                      <div class="col-md-6 text-center">
+                        {{labels.hisDistCont.lastAppAuth.appDate}}<br> {{labels.hisDistCont.lastAppAuth.date}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- start row -->
+                <div class="col-sm-5 pt-2">
+                  <label class="container-checkbox" for="chkHpoAllowStatus">
+                    <input checked="checked" type="checkbox" id="chkHpoAllowStatus" name="chkHpoAllowStatus"
+                      [(ngModel)]="checkbox.chkHpoAllowStatus" checked="checked">
+                    <span class="checkmark"></span>
+                    {{labels.hisDistCont.lastSignAppAuth.allowPerApp}}
+                  </label>
+                </div>
+              </div> <!-- end row -->
+            </div> <!-- end frame -->
+          </div> <!-- end frame -->
+        </ng-container>
+
+        <ng-container *ngIf="toggleI == 3">
+          <div class="boxdiv md-auto mt-4" Name="frmGeneralData2">
+            <div class="row mt-2 ">
+              <div class="col-md-6">
+                <div class="boxmiddile pb-3">
+                  <h5>{{labels.geoRef.title}}</h5>
+                  <div class="row mt-2">
+                    <div class="col-md-3 ">
+                      {{labels.geoRef.eastWest}}
+                    </div>
+                    <div class="col-md-3 px-0">
+                      {{labels.geoRef.xCordinate}}
+                    </div>
+                    <div class="col-md-5">
+                      <input type="text" name="txtCoordinate1Value" [(ngModel)]="std100mHeader.Coordinate1"
+                        class="form-control form-control-input" placeholder="3107012">
+                    </div>
+                    <div class="col-md-1">
+                      <input type="text" name="txtCoordinate1Dir_NOTUSED" [(ngModel)]="formM.txtCoordinate1Dir_NOTUSED"
+                        class="form-control form-control-input">
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-md-3 ">
+                      {{labels.geoRef.northSouth}}
+                    </div>
+                    <div class="col-md-3 px-0">
+                      {{labels.geoRef.yCordinate}}
+                    </div>
+                    <div class="col-md-5">
+                      <input type="text" name="txtCoordinate2Value" [(ngModel)]="std100mHeader.Coordinate2"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-1">
+                      <input type="text" name="txtCoordinate2Dir_NOTUSED" [(ngModel)]="missing"
+                        class="form-control form-control-input">
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-md-12 border-bottom border-top py-1">
+                      <div class="row">
+                        <div class="col-md-6">
+                          {{labels.geoRef.facetMapPageRef}}
+                        </div>
+                        <div class="col-md-5">
+                          <input type="text" name="txtKeyMapNo" [(ngModel)]="std100mHeader.KeyMapNmbr"
+                            class="form-control form-control-input" placeholder="492@">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 border-bottom pb-1">
+                      <div class="row mt-1">
+
+                        <div class="col-md-6">
+                          {{labels.geoRef.censusTract}}
+                        </div>
+                        <div class="col-md-5">
+                          <input type="text" name="txtCensusTract" [(ngModel)]="std100mHeader.NewCensusTract"
+                            class="form-control form-control-input">
+                        </div>
+                      </div>
+                      <div class="row mt-2">
+                        <div class="col-md-6">
+                          {{labels.geoRef.lotNoBlock}}
+                        </div>
+                        <div class="col-md-2 pr-1">
+                          <input type="text" name="txtLotNo" [(ngModel)]="std100mHeader.LotNo"
+                            class="form-control form-control-input">
+                        </div>
+                        <div class="col-md-2 pr-1 pl-1">
+                          <input type="text" name="txtLotNo" [(ngModel)]="std100mHeader.LotNo"
+                            class="form-control form-control-input">
+                        </div>
+                      </div>
+                      <div class="row mt-2">
+                        <div class="col-md-6">
+                          {{labels.geoRef.tractMapNo}}
+                        </div>
+                        <div class="col-md-5">
+                          <input type="text" name="txtMapNo" [(ngModel)]="std100mHeader.MapNo"
+                            class="form-control form-control-input">
+                        </div>
+                      </div>
+                      <div class="row col-md-12">
+                        <!-- start row -->
+                        <div class="col-md-12">
+                          <label for="txtOpenSpaceZone" class="fs-12 d-block d-block pb-4 mt-1"></label>
+
+                        </div>
+                      </div> <!-- end row -->
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-auto">
+                          {{labels.geoRef.InspnZone}}
+                        </div>
+                        <div class="col-md-4">
+                          <input type="text" name="txtInspectionZone" [(ngModel)]="std100mHeader.InspectionZone"
+                            class="form-control form-control-input" value="12">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-auto pl-0">
+                          {{labels.geoRef.openSpaceZone}}
+                        </div>
+                        <div class="col-md-4 pl-0">
+                          <input type="text" value="14" name="txtInspectionZone"
+                            [(ngModel)]="std100mHeader.InspectionZone" class="form-control form-control-input">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="boxmiddile pb-3">
+                  <h5> {{labels.lotDimensions.title}}</h5>
+                  <div class="row mt-2">
+                    <div class="col-md-3">
+                      {{labels.lotDimensions.lotSize}}
+                    </div>
+                    <div class="col-md-3 pl-0 pr-1">
+                      <input type="text" name="txtLotSize" [(ngModel)]="std100mHeader.NewLotSize"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-6 pl-0 pr-1">
+                      <input type="text" name="txtLotSizeUnit" [(ngModel)]="formM.txtLotSizeUnit"
+                        class="form-control form-control-input">
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-md-3">
+                      {{labels.lotDimensions.depth}}
+                    </div>
+                    <div class="col-md-2 pl-0">
+                      <input type="text" name="txtLotDepth" [(ngModel)]="std100mHeader.NewDepth"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-2">
+                      {{labels.lotDimensions.front}}
+                    </div>
+                    <div class="col-md-2">
+                      <input type="text" name="txtLotFrontage" [(ngModel)]="std100mHeader.NewFrontage"
+                        class="form-control form-control-input">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="boxmiddile pb-3 mt-4">
+                  <h5>{{labels.restrictionsArea.title}}</h5>
+                  <div class="row mt-1">
+                    <div class="col-md-2 text-center"></div>
+
+                    <div class="col-md-2 text-center">
+                      {{labels.restrictionsArea.deed}}
+                      <input type="text" name="txtDeedRestriction" [(ngModel)]="std100mHeader.DeedRestriction"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-2 text-center">
+                      {{labels.restrictionsArea.A1}}
+                      <input type="text" name="txtRestrict1" [(ngModel)]="std100mHeader.RestrictArea1"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-2 text-center">
+                      {{labels.restrictionsArea.A2}}
+                      <input type="text" name="txtRestrict2" [(ngModel)]="std100mHeader.RestrictArea2"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-2 text-center">
+                      {{labels.restrictionsArea.A3}}
+                      <input type="text" name="txtRestrict3" [(ngModel)]="std100mHeader.RestrictArea3"
+                        class="form-control form-control-input">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="boxmiddile pb-3 mt-4">
+                  <h5>{{labels.setBacks.title}}</h5>
+                  <div class="row mt-1">
+                    <div class="col-md-2 text-center"></div>
+
+                    <div class="col-md-2 text-center">
+                      {{labels.setBacks.left}}
+                      <input type="text" name="txtDeedRestriction" [(ngModel)]="std100mHeader.DeedRestriction"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-2 text-center">
+                      {{labels.setBacks.right}}
+                      <input type="text" name="txtRestrict1" [(ngModel)]="std100mHeader.RestrictArea1"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-2 text-center">
+                      {{labels.setBacks.front}}
+                      <input type="text" name="txtRestrict2" [(ngModel)]="std100mHeader.RestrictArea2"
+                        class="form-control form-control-input">
+                    </div>
+                    <div class="col-md-2 text-center">
+                      {{labels.setBacks.rear}}
+                      <input type="text" name="txtRestrict3" [(ngModel)]="std100mHeader.RestrictArea3"
+                        class="form-control form-control-input">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div> <!-- end frame -->
+        </ng-container>
+      </div> <!-- end frame -->
+    </form>
+  </div> <!-- end form container -->
+</div> <!-- outer container -->
